@@ -1,3 +1,5 @@
+--Somador 1 bit
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
