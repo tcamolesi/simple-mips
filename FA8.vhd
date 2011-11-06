@@ -1,3 +1,6 @@
+-- Somador 8 bit
+-- Não a forma mais inteligente de montar
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
