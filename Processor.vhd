@@ -1,3 +1,7 @@
+--Entidade top level da implementação
+--Atenção para as entidades de teste colocados como memoria de instruções e dados
+
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
