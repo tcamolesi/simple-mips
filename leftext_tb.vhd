@@ -1,3 +1,5 @@
+-- A gente tem que gerar nossos prõspios aquivos de teste
+-- Esse aquivo e alguns outros vao dar erro se compilados no Quartus
 
 -- VHDL Test Bench Created from source file left_ext.vhd -- 21:20:30 10/19/2002
 --
