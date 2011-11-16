@@ -36,9 +36,9 @@ begin
         READ(BUF, TADR);
         READ(BUF, TDTA);
         MEM(TADR) := TDTA(31 downto 24);
-			 MEM(TADR + 1) := TDTA(23 downto 16);			 
-			 MEM(TADR + 2) := TDTA(15 downto 8);
-			 MEM(TADR + 3) := TDTA(7 downto 0);		
+       MEM(TADR + 1) := TDTA(23 downto 16);
+       MEM(TADR + 2) := TDTA(15 downto 8);
+       MEM(TADR + 3) := TDTA(7 downto 0);
       end loop;
       INIT:= 1;
     end if;

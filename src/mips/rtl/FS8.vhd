@@ -28,14 +28,14 @@ architecture CAL of FS8 is
   end component;
 
   signal BO_0: STD_LOGIC;               -- out of 1st goes to in of 2nd, etc...
-  signal BO_1: STD_LOGIC; 
-  signal BO_2: STD_LOGIC; 
-  signal BO_3: STD_LOGIC; 
-  signal BO_4: STD_LOGIC; 
-  signal BO_5: STD_LOGIC; 
-  signal BO_6: STD_LOGIC; 
+  signal BO_1: STD_LOGIC;
+  signal BO_2: STD_LOGIC;
+  signal BO_3: STD_LOGIC;
+  signal BO_4: STD_LOGIC;
+  signal BO_5: STD_LOGIC;
+  signal BO_6: STD_LOGIC;
 
-  
+
 
 begin
 

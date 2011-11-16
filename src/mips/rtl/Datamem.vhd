@@ -6,12 +6,12 @@ entity DATAMEMORY is
 
   generic ( RDEL, DISDEL : TIME := 10 ns );
 
-  port ( 
-  			INPUT     : in STD_LOGIC_VECTOR (31 downto 0);
+  port (
+        INPUT     : in STD_LOGIC_VECTOR (31 downto 0);
        ADDRESS   : in STD_LOGIC_VECTOR (31 downto 0);
        MEM_WRITE : in STD_LOGIC;
        CLK       : in STD_LOGIC;
-			OUTPUT    : out STD_LOGIC_VECTOR (31 downto 0)
+      OUTPUT    : out STD_LOGIC_VECTOR (31 downto 0)
          );
 
 end DATAMEMORY;
@@ -31,7 +31,7 @@ begin
         MEM(CONV_INTEGER(ADDRESS(8 downto 0))) <= INPUT(31 downto 24);
         MEM(CONV_INTEGER(ADDRESS(8 downto 2) & "01")) <= INPUT(23 downto 16);
         MEM(CONV_INTEGER(ADDRESS(8 downto 2) & "10")) <= INPUT(15 downto 8);
-			 MEM(CONV_INTEGER(ADDRESS(8 downto 2) & "11")) <= INPUT(7 downto 0);            
+       MEM(CONV_INTEGER(ADDRESS(8 downto 2) & "11")) <= INPUT(7 downto 0);
       end if;
     end if;
 end process;

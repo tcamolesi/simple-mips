@@ -31,14 +31,14 @@ architecture CAL of FA8 is
   end component;
 
   signal CO_0: STD_LOGIC;               -- out of 1st goes to in of 2nd, etc...
-  signal CO_1: STD_LOGIC; 
-  signal CO_2: STD_LOGIC; 
-  signal CO_3: STD_LOGIC; 
-  signal CO_4: STD_LOGIC; 
-  signal CO_5: STD_LOGIC; 
-  signal CO_6: STD_LOGIC; 
+  signal CO_1: STD_LOGIC;
+  signal CO_2: STD_LOGIC;
+  signal CO_3: STD_LOGIC;
+  signal CO_4: STD_LOGIC;
+  signal CO_5: STD_LOGIC;
+  signal CO_6: STD_LOGIC;
 
-  
+
 
 begin
 
