@@ -41,4 +41,15 @@ package glue_pack is
      );
   end component;
 
+  component adder_g is
+    generic (
+      bus_width_g   : integer := 32
+    );
+    port (
+      d1_i : in  std_logic_vector(bus_width_g - 1 downto 0);
+      d2_i : in  std_logic_vector(bus_width_g - 1 downto 0);
+
+      q_o  : out std_logic_vector(bus_width_g - 1 downto 0)
+     );
+  end component;
 end package;
