@@ -26,17 +26,6 @@ package alu_pack is
                      is_left     : in boolean
                      ) return dw_t;
 
-  component alu is
-    port (
-      op1_i     : in  dw_t;      -- First operand
-      op2_i     : in  dw_t;      -- Second operand
-      func_i    : in  alu_op_t;  -- Operation
-
-      res_o     : out dw_t;      -- Result
-      zf_o      : out std_logic; -- Zero flag
-      bf_o      : out std_logic  -- Borrow flag
-    );
-  end component;
 end package;
 
 package body alu_pack is
