@@ -7,12 +7,6 @@ use work.core_pack.all;
 package control_pack is
 
   type instruction_t is (r_type, lw_type, sw_type, beq_type);
-
-  subtype opcode_t is std_logic_vector( 5 downto 0);
-  subtype reg_id_t is std_logic_vector( 4 downto 0);
-  subtype funct_t  is std_logic_vector( 5 downto 0);
-  subtype immed_t  is std_logic_vector(15 downto 0);
-
   function get_instr_type(op : in opcode_t) return instruction_t;
 
 end package;
