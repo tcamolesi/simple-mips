@@ -39,7 +39,7 @@ package body alu_pack is
     variable v  : dw_t;
     variable cf : dw_t;
   begin
-    if is_left = '0' then
+    if is_left then
       v := op1;
     else
       for i in op1'high downto op1'low loop
@@ -47,7 +47,7 @@ package body alu_pack is
       end loop;
     end if;
 
-    if arith_flag = '1' then
+    if arith_flag then
       cf := (others => op1(op1'high));
     else
       cf := (others => '0');
@@ -61,7 +61,7 @@ package body alu_pack is
     end loop;
 
     -- Reverse output when shifting right
-    if is_left = '1' then
+    if is_left then
       for i in op1'high downto op1'low loop
         v(i) := op1(op1'high-i);
       end loop;

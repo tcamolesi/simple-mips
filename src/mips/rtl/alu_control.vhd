@@ -25,6 +25,7 @@ begin
       when r_type   => case funct_i is
                          when "100000" => aluop_o <= op_add;
                          when "100010" => aluop_o <= op_sub;
+                         when others  => aluop_o <= op_add;
                        end case;
     end case;
   end process;

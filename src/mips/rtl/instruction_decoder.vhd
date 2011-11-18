@@ -18,10 +18,10 @@ entity intruction_decoder is
 end intruction_decoder;
 
 architecture behavioral of intruction_decoder is
-  alias op     : opcode_t is instr_i(31 downto 25);
-  alias rs     : reg_id_t is instr_i(24 downto 19);
-  alias rt     : reg_id_t is instr_i(18 downto 13);
-  alias rd     : reg_id_t is instr_i(13 downto  8);
+  alias op     : opcode_t is instr_i(31 downto 26);
+  alias rs     : reg_id_t is instr_i(25 downto 21);
+  alias rt     : reg_id_t is instr_i(20 downto 16);
+  alias rd     : reg_id_t is instr_i(15 downto 11);
   alias funct  : funct_t  is instr_i( 5 downto  0);
   alias immed  : immed_t  is instr_i(15 downto  0);
 

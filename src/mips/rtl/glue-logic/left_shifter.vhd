@@ -15,6 +15,7 @@ entity left_shifter is
 end left_shifter;
 
 architecture behavioral of left_shifter is
+  constant zeroes : std_logic_vector(shift_amount_g - 1 downto 0) := (others => '0');
 begin
-  q_o <= d_i(d_i'high - shift_amount_g downto 0) & (others => '0');
+  q_o <= d_i(d_i'high - shift_amount_g downto 0) & zeroes;
 end behavioral;

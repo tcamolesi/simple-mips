@@ -19,12 +19,12 @@ end reg_g;
 
 architecture behavioral of reg_g is
 begin
-  process (clk_i, rst_i)
+  process (ck_i, rst_i)
   begin
     if rst_i = '1' then
       q_o <= (others => '0');
     else
-      if rising_edge(clk_i) then
+      if rising_edge(ck_i) then
         q_o <= d_i;
       end if;
     end if;

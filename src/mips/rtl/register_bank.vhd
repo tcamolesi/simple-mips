@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 use work.core_pack.all;
+use work.comp_pack.all;
 
 entity reg_bank_3port is
   generic (
