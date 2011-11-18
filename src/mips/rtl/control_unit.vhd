@@ -6,7 +6,7 @@ use work.control_pack.all;
 
 entity control_unit is
   port (
-    instr_i         : in  dw_t;
+    op_i            : in  opcode_t;
 
     reg_dst_o       : out std_logic;
     branch_o        : out std_logic;
@@ -21,19 +21,11 @@ entity control_unit is
 end control_unit;
 
 architecture behavioral of control_unit is
-  alias op     : opcode_t is instr_i(31 downto 25);
-
-  alias rs     : reg_id_t is instr_i(24 downto 19);
-  alias rt     : reg_id_t is instr_i(18 downto 13);
-  alias rd     : reg_id_t is instr_i(13 downto  8);
-  alias funct  : funct_t  is instr_i( 5 downto  0);
-  alias immed  : immed_t  is instr_i(15 downto  0);
-
 begin
-  process(instr_i)
+  process(op_i)
     variable type_v : instruction_t;
   begin
-    type_v := get_instr_type(op);
+    type_v := get_instr_type(op_i);
 
     case type_v is
       when r_type   => reg_dst_o    <= '1';
