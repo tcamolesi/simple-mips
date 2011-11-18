@@ -16,6 +16,7 @@ entity mips is
     data_rdata_i      : in  dw_t;
 
     data_w_en_o       : out std_logic;
+    data_r_en_o       : out std_logic;
     data_wdata_o      : out dw_t;
     data_addr_o       : out dw_t;
     instr_addr_o      : out dw_t
@@ -187,6 +188,19 @@ begin
       bf_o   => bf
     );
 
+  control: control_unit
+    port map (
+      op_i         => op,
+
+      reg_dst_o    => reg_dst,
+      branch_o     => branch,
+      mem_to_reg_o => mem_to_reg,
+      mem_r_o      => mem_r,
+      mem_wr_o     => mem_wr,
+      alu_src_o    => alu_src,
+      reg_wr_o     => reg_wr,
+      alucontrol_o => alucontrol
+     );
 --------------------------------------------------------------------------------
 -- Glue Logic
 --------------------------------------------------------------------------------
@@ -237,6 +251,7 @@ begin
 -- Output signals
 --------------------------------------------------------------------------------
   data_w_en_o  <= mem_wr;
+  data_r_en_o  <= mem_r;
   data_addr_o  <= alu_res;
   data_wdata_o <= reg_q1;
   instr_addr_o <= pc_q;

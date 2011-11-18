@@ -79,7 +79,6 @@ package comp_pack is
       reg_dst_o       : out std_logic;
       branch_o        : out std_logic;
       mem_to_reg_o    : out std_logic;
-      alu_op_o        : out std_logic;
       mem_r_o         : out std_logic;
       mem_wr_o        : out std_logic;
       alu_src_o       : out std_logic;
