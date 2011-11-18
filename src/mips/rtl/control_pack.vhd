@@ -6,7 +6,7 @@ use work.core_pack.all;
 
 package control_pack is
 
-  type instruction_t is (r_type, i_type, j_type);
+  type instruction_t is (r_type, lw_type, sw_type, beq_type);
 
   subtype opcode_t is std_logic_vector( 5 downto 0);
   subtype reg_id_t is std_logic_vector( 4 downto 0);
@@ -22,10 +22,12 @@ package body control_pack is
   begin
     if op = "000000" then
       return r_type;
-    elsif std_match(op, "00001-") then
-      return j_type;
+    elsif op = "100011" then
+      return lw_type;
+    elsif op = "101011" then
+      return sw_type;
     else
-      return i_type;
+      return beq_type;
     end if;
   end function;
 end package body;
