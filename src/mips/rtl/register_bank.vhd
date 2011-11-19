@@ -24,14 +24,13 @@ entity reg_bank_3port is
 end reg_bank_3port;
 
 architecture structural of reg_bank_3port is
-  subtype addr_t is natural range (2**sel_bits_g - 1) downto 0;
-  type qo_s_t is array (addr_t'range) of dw_t;
+  type qo_s_t is array (2**sel_bits_g - 1 downto 0) of dw_t;
 
-  signal we_s : std_logic_vector(addr_t);
+  signal we_s : std_logic_vector(qo_s_t'range);
   signal qo_s : qo_s_t;
 
 begin
-  gen_regs: for i in addr_t'range generate
+  gen_regs: for i in qo_s_t'range generate
     regs: reg_g generic map(nbits_g => dw_t'length)
                 port map(
                   d_i     => d_i,

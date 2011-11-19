@@ -10,3 +10,6 @@ package core_pack is
   subtype immed_t  is std_logic_vector(15 downto 0);
 
 end package;
+
+package body core_pack is
+end package body;

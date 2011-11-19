@@ -68,6 +68,7 @@ architecture structural of mips is
   signal zf          : std_logic; -- Zero flag
   signal bf          : std_logic; -- Borrow flag
 
+  signal branch_mux_sel : std_logic;
 begin
 --------------------------------------------------------------------------------
 -- Muxes
@@ -79,7 +80,7 @@ begin
     port map (
       d0_i  => pc_p4,
       d1_i  => pc_branch,
-      sel_i => branch and zf,
+      sel_i => branch_mux_sel,
 
       q_o   => pc_d
     );
@@ -255,4 +256,5 @@ begin
   data_addr_o  <= alu_res;
   data_wdata_o <= reg_q1;
   instr_addr_o <= pc_q;
+  branch_mux_sel <= branch and zf;
 end architecture;

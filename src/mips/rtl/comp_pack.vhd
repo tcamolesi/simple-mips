@@ -104,3 +104,6 @@ package comp_pack is
      );
   end component;
 end package;
+
+package body comp_pack is
+end package body;

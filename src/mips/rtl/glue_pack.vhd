@@ -53,3 +53,6 @@ package glue_pack is
      );
   end component;
 end package;
+
+package body glue_pack is
+end package body;

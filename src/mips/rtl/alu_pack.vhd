@@ -17,7 +17,7 @@ end package;
 package body alu_pack is
 
   -- Based on Jose A. Ruiz's barrel shifter
-  function alu_shift(op1         : in std_logic_vector;
+  function alu_shift(op1         : in dw_t;
                      op2         : in std_logic_vector(4 downto 0);
                      arith_flag  : in boolean;
                      is_left     : in boolean
