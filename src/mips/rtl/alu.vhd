@@ -27,13 +27,7 @@ begin
              res_v,
              add_v,
              sub_v,
-             and_v,
-             or_v,
-             xor_v,
-             nor_v,
-             neg_v,
-             not_v,
-             shift_v : alu_dw_t;
+             xor_v : alu_dw_t;
     variable shift_w : dw_t;
 
   begin
@@ -42,29 +36,12 @@ begin
 
     add_v   := op1_ext +   op2_ext;
     sub_v   := op1_ext -   op2_ext;
-    and_v   := op1_ext and op2_ext;
-    or_v    := op1_ext or  op2_ext;
     xor_v   := op1_ext xor op2_ext;
-    nor_v   := op1_ext nor op2_ext;
-    neg_v   := -op1_ext;
-    not_v   := not op1_ext;
-    shift_w := alu_shift(op1_i,
-                         op2_i(4 downto 0),
-                         func_i = op_sra,       -- Only SRA is an arithmetic shift
-                         not (func_i = op_sll));-- Only SLL is a left shift
-
-    shift_v := resize(signed(shift_w), alu_dw_t'length);
 
     case func_i is
-        when op_add | op_addu => res_v := add_v;
-        when op_sub | op_subu => res_v := sub_v;
-        when op_and           => res_v := and_v;
-        when op_or            => res_v := or_v;
-        when op_xor           => res_v := xor_v;
-        when op_nor           => res_v := nor_v;
-        when op_neg           => res_v := neg_v;
-        when op_not           => res_v := not_v;
-        when others           => res_v := shift_v;
+        when op_add => res_v := add_v;
+        when op_sub => res_v := sub_v;
+        when op_xor => res_v := xor_v;
     end case;
 
     res_o <= std_logic_vector(res_v(res_o'range));
