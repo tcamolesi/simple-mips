@@ -19,13 +19,18 @@ begin
   process(alucontrol_i, funct_i)
   begin
     case alucontrol_i is
-      when beq_type => aluop_o <= op_xor;
-      when lw_type  => aluop_o <= op_add;
-      when sw_type  => aluop_o <= op_add;
+      when beq_type => aluop_o <= op_sub;  --BEQ => sets zf if (op1 - op2) == 0
+      when bne_type => aluop_o <= op_nsub; --BNE => sets zf if (op1 - op2) != 0
+      when lw_type  => aluop_o <= op_add; --LW
+      when sw_type  => aluop_o <= op_add; --SW
       when r_type   => case funct_i is
-                         when "100000" => aluop_o <= op_add;
-                         when "100010" => aluop_o <= op_sub;
-                         when others  => aluop_o <= op_add;
+                         when "100000" => aluop_o <= op_add; --ADD
+                         when "100001" => aluop_o <= op_add; --ADDU
+                         when "100010" => aluop_o <= op_sub; --SUB
+                         when "100011" => aluop_o <= op_sub; --SUBU
+                         when "100100" => aluop_o <= op_and; --AND
+                         when "100101" => aluop_o <= op_or;  --OR
+                         when others   => aluop_o <= op_add;
                        end case;
     end case;
   end process;

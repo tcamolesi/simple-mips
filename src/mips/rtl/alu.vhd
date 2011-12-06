@@ -26,8 +26,10 @@ begin
              op2_ext,
              res_v,
              add_v,
+             and_v,
+             or_v,
              sub_v,
-             xor_v : alu_dw_t;
+             nsub_v : alu_dw_t;
     variable shift_w : dw_t;
 
   begin
@@ -35,13 +37,17 @@ begin
     op2_ext := resize(signed(op2_i), alu_dw_t'length);
 
     add_v   := op1_ext +   op2_ext;
+    and_v   := op1_ext and op2_ext;
+     or_v   := op1_ext or  op2_ext;
     sub_v   := op1_ext -   op2_ext;
-    xor_v   := op1_ext xor op2_ext;
+    nsub_v  := not sub_v;
 
     case func_i is
         when op_add => res_v := add_v;
+        when op_and => res_v := and_v;
+        when op_or  => res_v := or_v;
         when op_sub => res_v := sub_v;
-        when op_xor => res_v := xor_v;
+        when op_nsub=> res_v := nsub_v;
     end case;
 
     res_o <= std_logic_vector(res_v(res_o'range));

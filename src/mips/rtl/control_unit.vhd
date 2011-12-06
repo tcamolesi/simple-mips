@@ -58,6 +58,14 @@ begin
                        mem_r_o      <= '0';
                        mem_wr_o     <= '0';
                        branch_o     <= '1';
+
+      when bne_type => reg_dst_o    <= '0';
+                       alu_src_o    <= '0';
+                       mem_to_reg_o <= '0';
+                       reg_wr_o     <= '0';
+                       mem_r_o      <= '0';
+                       mem_wr_o     <= '0';
+                       branch_o     <= '1';
     end case;
 
     alucontrol_o <= type_v;

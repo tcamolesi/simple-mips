@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 use work.core_pack.all;
 
 package alu_pack is
-  type alu_op_t is (op_add, op_sub, op_xor);
+  type alu_op_t is (op_add, op_sub, op_and, op_or, op_nsub);
 
   function alu_shift(op1         : in dw_t;
                      op2         : in std_logic_vector(4 downto 0);
