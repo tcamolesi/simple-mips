@@ -51,6 +51,14 @@ begin
                        mem_wr_o     <= '1';
                        branch_o     <= '0';
 
+      when addi_type=> reg_dst_o    <= '0';
+                       alu_src_o    <= '1';
+                       mem_to_reg_o <= '0';
+                       reg_wr_o     <= '1';
+                       mem_r_o      <= '0';
+                       mem_wr_o     <= '0';
+                       branch_o     <= '0';
+
       when beq_type => reg_dst_o    <= '0';
                        alu_src_o    <= '0';
                        mem_to_reg_o <= '0';

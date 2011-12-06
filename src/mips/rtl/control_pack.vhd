@@ -6,7 +6,7 @@ use work.core_pack.all;
 
 package control_pack is
 
-  type instruction_t is (r_type, lw_type, sw_type, beq_type, bne_type);
+  type instruction_t is (r_type, lw_type, sw_type, addi_type, beq_type, bne_type);
   function get_instr_type(op : in opcode_t) return instruction_t;
 
 end package;
@@ -22,8 +22,10 @@ package body control_pack is
       return sw_type;
     elsif op = "000100" then
       return beq_type;
-    else
+    elsif op = "000101" then
       return bne_type;
+    else
+      return addi_type;
     end if;
   end function;
 end package body;

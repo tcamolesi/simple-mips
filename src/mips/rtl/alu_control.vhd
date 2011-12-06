@@ -23,6 +23,7 @@ begin
       when bne_type => aluop_o <= op_nsub; --BNE => sets zf if (op1 - op2) != 0
       when lw_type  => aluop_o <= op_add; --LW
       when sw_type  => aluop_o <= op_add; --SW
+      when addi_type=> aluop_o <= op_add; --ADDI
       when r_type   => case funct_i is
                          when "100000" => aluop_o <= op_add; --ADD
                          when "100001" => aluop_o <= op_add; --ADDU
