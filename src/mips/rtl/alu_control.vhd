@@ -31,6 +31,7 @@ begin
                          when "100011" => aluop_o <= op_sub; --SUBU
                          when "100100" => aluop_o <= op_and; --AND
                          when "100101" => aluop_o <= op_or;  --OR
+                         when "101010" => aluop_o <= op_slt; --SLT
                          when others   => aluop_o <= op_add;
                        end case;
     end case;

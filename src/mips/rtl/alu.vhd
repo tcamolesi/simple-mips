@@ -29,7 +29,8 @@ begin
              and_v,
              or_v,
              sub_v,
-             nsub_v : alu_dw_t;
+             nsub_v,
+             slt_v : alu_dw_t;
     variable shift_w : dw_t;
 
   begin
@@ -42,12 +43,16 @@ begin
     sub_v   := op1_ext -   op2_ext;
     nsub_v  := not sub_v;
 
+    -- 1 if op1 - op2 < 0 (checks sign bit). 0 otherwise
+    slt_v   := (0 => sub_v(sub_v'high), others => '0');
+
     case func_i is
         when op_add => res_v := add_v;
         when op_and => res_v := and_v;
         when op_or  => res_v := or_v;
         when op_sub => res_v := sub_v;
         when op_nsub=> res_v := nsub_v;
+        when op_slt => res_v := slt_v;
     end case;
 
     res_o <= std_logic_vector(res_v(res_o'range));
