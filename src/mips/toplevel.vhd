@@ -8,9 +8,12 @@ use work.mips_ram;
 use work.mips_rom;
 
 entity toplevel is
+  generic (
+    init_file         : string := "../../../src/mips/romdata.hex"
+  );
   port (
-      rst_i             : in  std_logic;
-      ck_i              : in  std_logic
+    rst_i             : in  std_logic;
+    ck_i              : in  std_logic
   );
 end toplevel;
 
@@ -42,6 +45,10 @@ architecture structural of toplevel is
   end component;
 
   component mips_rom is
+    generic
+    (
+      init_file : string
+    );
     port
     (
       address : in std_logic_vector (9 downto 0);
@@ -83,6 +90,10 @@ begin
     );
 
   instrmem: mips_rom
+    generic map
+    (
+      init_file => init_file
+    )
     port map
     (
       address => instr_addr(9 downto 0),
