@@ -96,7 +96,7 @@ begin
     )
     port map
     (
-      address => instr_addr(9 downto 0),
+      address => instr_addr(11 downto 2), --Addressing is word-based
       clock   => ck_i,
       q       => instr_rdata
     );
