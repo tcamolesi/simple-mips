@@ -42,7 +42,7 @@ begin
 
     we_s(i) <= '1' when rw_sel = std_logic_vector(to_unsigned(i, rw_sel'length))
                         and we_i = '1'
-                   else '0';
+                        and i > 0; -- Make reg(0) read-only
   end generate;
 
   q0_o <= qo_s(to_integer(unsigned(r0_sel)));
