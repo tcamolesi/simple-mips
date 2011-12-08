@@ -114,8 +114,8 @@ begin
       bus_width_g => dw_t'length
     )
     port map (
-      d0_i  => data_rdata_i,
-      d1_i  => alu_res,
+      d0_i  => alu_res,
+      d1_i  => data_rdata_i,
       sel_i => mem_to_reg,
 
       q_o   => reg_w_data
