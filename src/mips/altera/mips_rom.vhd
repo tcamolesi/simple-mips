@@ -40,6 +40,10 @@ LIBRARY altera_mf;
 USE altera_mf.all;
 
 ENTITY mips_rom IS
+  generic
+  (
+    init_file : string := "../romdata.hex"
+  );
 	PORT
 	(
 		address		: IN STD_LOGIC_VECTOR (9 DOWNTO 0);
@@ -85,7 +89,7 @@ BEGIN
 	GENERIC MAP (
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
-		init_file => "../romdata.hex",
+		init_file => init_file,
 		intended_device_family => "Cyclone II",
 		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
 		lpm_type => "altsyncram",
