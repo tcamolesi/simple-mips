@@ -1,3 +1,14 @@
+-- Purpose: Test ADDI Instruction
+-- Program file: tb_addi.hex
+-- Disassembled code:
+--   addi $1, $0, 15; reg1  = 15
+--   addi $1, $1,  1; reg1 += 1
+--   addi $2, $0,  1; reg2  = 1
+--   addi $2, $1,  0; reg2  = reg1
+-- Relevant signals:
+--   system/processor/reg_bank/gen_regs(1)/regs/q_o
+--   system/processor/reg_bank/gen_regs(2)/regs/q_o
+
 library ieee;
 use ieee.std_logic_1164.all;
 
