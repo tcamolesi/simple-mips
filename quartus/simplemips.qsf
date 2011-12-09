@@ -52,6 +52,9 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name HEX_FILE ../src/mips/bench/tb_jump.hex
+set_global_assignment -name VHDL_FILE ../src/mips/bench/tb_jump.vhd
 set_global_assignment -name VHDL_FILE "../src/mips/rtl/glue-logic/jump_combiner.vhd"
 set_global_assignment -name HEX_FILE ../src/mips/bench/tb_branch.hex
 set_global_assignment -name VHDL_FILE ../src/mips/bench/tb_branch.vhd
@@ -81,4 +84,3 @@ set_global_assignment -name VHDL_FILE "../src/mips/rtl/glue-logic/adder.vhd"
 set_global_assignment -name QIP_FILE ../src/mips/altera/mips_ram.qip
 set_global_assignment -name QIP_FILE ../src/mips/altera/mips_rom.qip
 set_global_assignment -name HEX_FILE ../src/mips/romdata.hex
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
