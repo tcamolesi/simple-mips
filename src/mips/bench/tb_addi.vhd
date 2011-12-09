@@ -24,11 +24,13 @@ architecture test of tb_addi is
     );
     port (
       rst_i             : in  std_logic;
-      ck_i              : in  std_logic
+      ck_i              : in  std_logic;
+      mem_ck_i          : in  std_logic
     );
   end component;
 
  signal ck          : std_logic;
+ signal mem_ck      : std_logic;
  signal rst         : std_logic;
 begin
   system: toplevel
@@ -37,7 +39,8 @@ begin
     )
     port map (
       rst_i     => rst,
-      ck_i      => ck
+      ck_i      => ck,
+      mem_ck_i  => mem_ck
     );
 
   rst_proc: process
@@ -52,8 +55,10 @@ begin
   begin
     wait for 10 ns;
     ck <= '0';
+    mem_ck <= '0' after 1 ns;
     wait for 10 ns;
     ck <= '1';
+    mem_ck <= '1' after 1 ns;
   end process;
 
 end architecture;

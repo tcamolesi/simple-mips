@@ -13,7 +13,8 @@ entity toplevel is
   );
   port (
     rst_i             : in  std_logic;
-    ck_i              : in  std_logic
+    ck_i              : in  std_logic;
+    mem_ck_i          : in  std_logic
   );
 end toplevel;
 
@@ -83,7 +84,7 @@ begin
     port map
     (
       address => data_addr(7 downto 0),
-      clock   => ck_i,
+      clock   => mem_ck_i,
       data    => data_wdata,
       wren    => data_w_en,
       q       => data_rdata
