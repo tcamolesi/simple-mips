@@ -8,6 +8,7 @@ package core_pack is
   subtype reg_id_t is std_logic_vector( 4 downto 0);
   subtype funct_t  is std_logic_vector( 5 downto 0);
   subtype immed_t  is std_logic_vector(15 downto 0);
+  subtype j_targ_t is std_logic_vector(25 downto 0);
 
 end package;
 

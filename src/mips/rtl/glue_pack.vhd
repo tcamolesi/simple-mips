@@ -52,6 +52,15 @@ package glue_pack is
       q_o  : out std_logic_vector(bus_width_g - 1 downto 0)
      );
   end component;
+
+  component jump_combiner is
+    port (
+      pc_i            : in  dw_t;
+      targ_addr_i     : in  std_logic_vector(25 downto 0);
+
+      addr_o          : out dw_t
+    );
+  end component;
 end package;
 
 package body glue_pack is
