@@ -15,6 +15,7 @@ entity control_unit is
     mem_wr_o        : out std_logic;
     alu_src_o       : out std_logic;
     reg_wr_o        : out std_logic;
+    jump_o          : out std_logic;
     alucontrol_o    : out instruction_t
    );
 end control_unit;
@@ -34,6 +35,7 @@ begin
                        mem_r_o      <= '0';
                        mem_wr_o     <= '0';
                        branch_o     <= '0';
+                       jump_o       <= '0';
 
       when lw_type  => reg_dst_o    <= '0';
                        alu_src_o    <= '1';
@@ -42,6 +44,7 @@ begin
                        mem_r_o      <= '1';
                        mem_wr_o     <= '0';
                        branch_o     <= '0';
+                       jump_o       <= '0';
 
       when sw_type  => reg_dst_o    <= '0';
                        alu_src_o    <= '1';
@@ -50,6 +53,7 @@ begin
                        mem_r_o      <= '0';
                        mem_wr_o     <= '1';
                        branch_o     <= '0';
+                       jump_o       <= '0';
 
       when addi_type=> reg_dst_o    <= '0';
                        alu_src_o    <= '1';
@@ -58,6 +62,7 @@ begin
                        mem_r_o      <= '0';
                        mem_wr_o     <= '0';
                        branch_o     <= '0';
+                       jump_o       <= '0';
 
       when beq_type => reg_dst_o    <= '0';
                        alu_src_o    <= '0';
@@ -66,6 +71,7 @@ begin
                        mem_r_o      <= '0';
                        mem_wr_o     <= '0';
                        branch_o     <= '1';
+                       jump_o       <= '0';
 
       when bne_type => reg_dst_o    <= '0';
                        alu_src_o    <= '0';
@@ -74,6 +80,16 @@ begin
                        mem_r_o      <= '0';
                        mem_wr_o     <= '0';
                        branch_o     <= '1';
+                       jump_o       <= '0';
+
+      when j_type   => reg_dst_o    <= '0';
+                       alu_src_o    <= '0';
+                       mem_to_reg_o <= '0';
+                       reg_wr_o     <= '0';
+                       mem_r_o      <= '0';
+                       mem_wr_o     <= '0';
+                       branch_o     <= '0';
+                       jump_o       <= '1';
     end case;
 
     alucontrol_o <= type_v;

@@ -83,6 +83,7 @@ package comp_pack is
       mem_wr_o        : out std_logic;
       alu_src_o       : out std_logic;
       reg_wr_o        : out std_logic;
+      jump_o          : out std_logic;
       alucontrol_o    : out instruction_t
      );
   end component;
@@ -100,7 +101,8 @@ package comp_pack is
       rt_o        : out reg_id_t;
       rd_o        : out reg_id_t;
       funct_o     : out funct_t;
-      immed_o     : out immed_t
+      immed_o     : out immed_t;
+      j_targ_o    : out j_targ_t
      );
   end component;
 end package;

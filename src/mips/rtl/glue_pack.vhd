@@ -56,7 +56,7 @@ package glue_pack is
   component jump_combiner is
     port (
       pc_i            : in  dw_t;
-      targ_addr_i     : in  std_logic_vector(25 downto 0);
+      targ_addr_i     : in  j_targ_t;
 
       addr_o          : out dw_t
     );

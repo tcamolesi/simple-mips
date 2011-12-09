@@ -31,6 +31,7 @@ architecture structural of mips is
   signal rd          : reg_id_t;
   signal funct       : funct_t;
   signal immed       : immed_t;
+  signal j_targ      : j_targ_t;
 
   -- Write register selector
   signal rw_sel      : reg_id_t;
@@ -44,6 +45,8 @@ architecture structural of mips is
   signal pc_q        : dw_t; -- PC out
   signal pc_p4       : dw_t; -- PC + 4
   signal pc_branch   : dw_t; -- PC + immed_sl2 (for branching)
+  signal pc_nojump   : dw_t; -- Target addr after branch_mux
+  signal pc_jump     : dw_t; -- Computed Jump Addr
 
   -- Control unit signals
   signal reg_dst     : std_logic;
@@ -54,6 +57,7 @@ architecture structural of mips is
   signal mem_wr      : std_logic;
   signal alu_src     : std_logic;
   signal reg_wr      : std_logic;
+  signal jump        : std_logic;
   signal alucontrol  : instruction_t;
 
   -- Register bank
@@ -82,8 +86,21 @@ begin
       d1_i  => pc_branch,
       sel_i => branch_mux_sel,
 
+      q_o   => pc_nojump
+    );
+
+  jump_mux: mux_2port
+    generic map (
+      bus_width_g => dw_t'length
+    )
+    port map (
+      d0_i  => pc_nojump,
+      d1_i  => pc_jump,
+      sel_i => jump,
+
       q_o   => pc_d
     );
+    
 
   reg_dst_mux: mux_2port
     generic map (
@@ -132,7 +149,8 @@ begin
       rt_o    => rt,
       rd_o    => rd,
       funct_o => funct,
-      immed_o => immed
+      immed_o => immed,
+      j_targ_o=> j_targ
     );
 
 --------------------------------------------------------------------------------
@@ -200,6 +218,7 @@ begin
       mem_wr_o     => mem_wr,
       alu_src_o    => alu_src,
       reg_wr_o     => reg_wr,
+      jump_o       => jump,
       alucontrol_o => alucontrol
      );
 --------------------------------------------------------------------------------
@@ -246,6 +265,14 @@ begin
     port map (
       d_i => immed_ext,
       q_o => immed_sl2
+    );
+
+  jump_comb: jump_combiner
+    port map (
+      pc_i            => pc_q,
+      targ_addr_i     => j_targ, 
+
+      addr_o          => pc_jump
     );
 
 --------------------------------------------------------------------------------

@@ -19,6 +19,7 @@ begin
   process(alucontrol_i, funct_i)
   begin
     case alucontrol_i is
+      when j_type   => aluop_o <= op_add;  -- J, don't care
       when beq_type => aluop_o <= op_sub;  --BEQ => sets zf if (op1 - op2) == 0
       when bne_type => aluop_o <= op_nsub; --BNE => sets zf if (op1 - op2) != 0
       when lw_type  => aluop_o <= op_add; --LW
