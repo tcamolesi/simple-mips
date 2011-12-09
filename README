@@ -1,1 +1,19 @@
-Primeira modificação
+Single Cycle MIPS Processor implemented in VHDL
+
+Supported Instructions:
+  + I-Type
+    - ADDI
+
+  + R-Type
+    - ADD
+    - SUB
+    - AND
+    - OR
+    - SLT
+
+  + Branch
+    - BNE
+    - BEQ
+
+  + J-Type
+    - J
